@@ -1,4 +1,3 @@
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
@@ -43,8 +42,5 @@ public class SeleiumPOP {
         searchMarkDetailsPage.selectModel("Audi A4");
         assertThat(searchMarkDetailsPage.getMarkAndModel(), containsString("Audi A4 (Serie)"));
         System.out.println("\n" + "Wyświetlona nazwa modelu to: " + searchMarkDetailsPage.getMarkAndModel());
-
-
     }
-
 }
