@@ -1,10 +1,11 @@
 package pages;
 
+import helpers.SeleniumMethod;
 import locators.FastSearchLocators;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
+ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,27 +26,26 @@ public class FastSearchPage {
     public void selectMark(String mark)
     {
         wait.until(ExpectedConditions.visibilityOf(fastSearchLocators.getMark()));
-        new Select(fastSearchLocators.getMark()).selectByVisibleText(mark);
+        SeleniumMethod.selectByTextFromDropDown(fastSearchLocators.getMark(), mark);
     }
 
     public void selectModel(String model)
     {
-        new Select(fastSearchLocators.getModel()).selectByVisibleText(model);
+        SeleniumMethod.selectByTextFromDropDown(fastSearchLocators.getModel(), model);
     }
 
     public void selectKilometer(String kilometer)
     {
-        new Select(fastSearchLocators.getKilometer()).selectByVisibleText(kilometer);
+        SeleniumMethod.selectByTextFromDropDown(fastSearchLocators.getKilometer(), kilometer);
     }
 
     public void selectCity(String city)
     {
-        fastSearchLocators.getCity().sendKeys(city);
-        fastSearchLocators.getCity().sendKeys(Keys.TAB);
+        SeleniumMethod.sendTextToElementAndLooseFocus(fastSearchLocators.getCity(), city);
     }
 
     public void search()
     {
-        fastSearchLocators.getSearchButton().click();
+        SeleniumMethod.clickOnElement(fastSearchLocators.getSearchButton());
     }
 }

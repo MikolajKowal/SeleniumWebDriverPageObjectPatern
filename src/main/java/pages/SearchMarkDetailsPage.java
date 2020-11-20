@@ -1,5 +1,6 @@
 package pages;
 
+import helpers.SeleniumMethod;
 import locators.SearchMarkDetailsLocators;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -28,28 +29,14 @@ public class SearchMarkDetailsPage {
 
     public void selectMark(String mark)
     {
-        wait.until(ExpectedConditions.visibilityOfAllElements(searchMarkDetailsLocators.getCarList()));
-        for (int i=0; i < searchMarkDetailsLocators.getCarList().size(); i++)
-        {
-            if(searchMarkDetailsLocators.getCarList().get(i).getText().contains(mark))
-            {
-                searchMarkDetailsLocators.getCarList().get(i).click();
-                break;
-            }
-        }
+        wait.until(ExpectedConditions.visibilityOfAllElements(searchMarkDetailsLocators.getCarList()searchMarkDetailsLocators.getCarList()));
+        SeleniumMethod.selectByTextFromElementList(searchMarkDetailsLocators.getCarList(), mark);
     }
 
     public void selectModel(String model)
     {
         wait.until(ExpectedConditions.visibilityOfAllElements(searchMarkDetailsLocators.getCarModelList()));
-        for (int i=0; i < searchMarkDetailsLocators.getCarModelList().size(); i++)
-        {
-            if(searchMarkDetailsLocators.getCarModelList().get(i).getText().contains(model))
-            {
-                searchMarkDetailsLocators.getCarModelList().get(i).click();
-                break;
-            }
-        }
+        SeleniumMethod.selectByTextFromElementList(searchMarkDetailsLocators.getCarModelList(), model);
     }
 
     public String getMarkAndModel()
