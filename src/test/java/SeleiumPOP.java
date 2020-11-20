@@ -46,7 +46,5 @@ public class SeleiumPOP {
     }
 
     @After
-    public void closeWindow() {
-        driver.quit();
-    }
+    public void closeWindow() { driver.quit(); }
 }
