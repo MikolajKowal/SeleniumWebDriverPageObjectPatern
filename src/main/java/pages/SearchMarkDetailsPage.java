@@ -29,7 +29,7 @@ public class SearchMarkDetailsPage {
 
     public void selectMark(String mark)
     {
-        wait.until(ExpectedConditions.visibilityOfAllElements(searchMarkDetailsLocators.getCarList()searchMarkDetailsLocators.getCarList()));
+        wait.until(ExpectedConditions.visibilityOfAllElements(searchMarkDetailsLocators.getCarList()));
         SeleniumMethod.selectByTextFromElementList(searchMarkDetailsLocators.getCarList(), mark);
     }
 
