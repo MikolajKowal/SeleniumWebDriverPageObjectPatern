@@ -1,3 +1,4 @@
+import helpers.FileHelper;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Ignore;
@@ -20,6 +21,7 @@ public class SeleiumPOP {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.navigate().to("https://www.mobile.de");
+        FileHelper.createFile();
     }
 
     @Test
@@ -39,12 +41,18 @@ public class SeleiumPOP {
     {
         SearchMarkDetailsPage searchMarkDetailsPage = new SearchMarkDetailsPage(driver);
         searchMarkDetailsPage.searchCarList();
+        FileHelper.writeToFile("test tekst");
         searchMarkDetailsPage.selectMark("Audi");
         searchMarkDetailsPage.selectModel("Audi A4");
         assertThat(searchMarkDetailsPage.getMarkAndModel(), containsString("Audi A4 (Serie)"));
+        FileHelper.writeToFile("test new tekst");
         System.out.println("\n" + "Wyświetlona nazwa modelu to: " + searchMarkDetailsPage.getMarkAndModel());
     }
 
     @After
-    public void closeWindow() { driver.quit(); }
+    public void closeWindow()
+    {
+        driver.quit();
+        FileHelper.closeWriter();
+    }
 }
